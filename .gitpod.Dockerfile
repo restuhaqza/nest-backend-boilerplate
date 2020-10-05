@@ -22,9 +22,9 @@ RUN wget "${ES_REPO}/${ES_ARCHIVE}" \
   && shasum -a 512 -c ${ES_ARCHIVE}.sha512 \
   && tar -xzf ${ES_ARCHIVE}
 
-RUN apt install docker.io
-
 USER root
+
+RUN apt install docker.io
 
 RUN groupadd docker
 
