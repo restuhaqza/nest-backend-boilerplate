@@ -22,11 +22,12 @@ RUN wget "${ES_REPO}/${ES_ARCHIVE}" \
   && shasum -a 512 -c ${ES_ARCHIVE}.sha512 \
   && tar -xzf ${ES_ARCHIVE}
 
-# Switch to root
+RUN apt install docker.io
+
 USER root
 
-# Run Service
-RUN service redis-server start
+RUN groupadd docker
 
-# Switch to default user
+RUN usermod -aG docker gitpod
+
 USER gitpod
